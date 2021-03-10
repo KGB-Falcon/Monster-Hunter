@@ -1,0 +1,16 @@
+NOTAS:
+
+Redux tienen s propia carpeta "redux"...
+esta contiene el store y los reducer,
+el store es una constante que es igual 
+una funcion "createStore()" que recibe como parametro el o los deducers, (el "createStore()" solo puede recibir un solo reducer, cuando se usan varios reducer se almacenan en una constante que es igual a la funcion "combinerReducers()" y esta recibe como parametro un objeto con los reducers que le queremos pasar al store, a los reucers en el obejeto se le asignan llaves de objeto porque estan en uno)...
+
+Para conectar los estados con un componente se usa {connect} que se obtiene desde react-redux, la sintaxis conocida por mi es: una vez que ya se ha importado la connect se crea una funcion con el nombre "mapStateToProps" que recibe como parametros el estado, y retorna lo que queremos de ese estado, 
+lo siguiente es conectar ese estado con el componente para eso esta {connect}...
+para usar connect se debe exportar el componente por defecto, y para conectarlos se usa esta sintaxis ==>
+"connect(mapStateToProps)(componente)"
+cuando hagamos esto tambien se le esta pasando al componente el estado como propiedad (props) y asi podremos usarlo como necesitemos.
+
+Los reducer son las accione que se van a tomar dependiendo el tipo de accion que nos llegue, claramente estas acciones ya habran sido declaradas por nosotros mismos...Los reducers son funciones puras (simples) que reciben como paramtros el estado inicial y las acciones, y la manera en la que decidimos que hacer segun las acciones que nos lleguen es mediante un switch, tambien en la parte superior se debe inicializar el estado, este es un obejeto con las llaves correspondientes a lo que estamos haciendo, es muy ecomendable asignarle valores por defecto ya que al principio los estados son indefinidos y de esta manera se evitan algunos problemas, NOTA: los reducers solo cambian y solo deben cambiar el estado nada mas...(Reducers = Acciones)
+
+El store es el contenedor del estado y el que contiene los reducers "acciones", y estos reducer se conectan de la manera ya mensionada en el segundo parrafo...
