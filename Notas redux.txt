@@ -14,3 +14,13 @@ cuando hagamos esto tambien se le esta pasando al componente el estado como prop
 Los reducer son las accione que se van a tomar dependiendo el tipo de accion que nos llegue, claramente estas acciones ya habran sido declaradas por nosotros mismos...Los reducers son funciones puras (simples) que reciben como paramtros el estado inicial y las acciones, y la manera en la que decidimos que hacer segun las acciones que nos lleguen es mediante un switch, tambien en la parte superior se debe inicializar el estado, este es un obejeto con las llaves correspondientes a lo que estamos haciendo, es muy ecomendable asignarle valores por defecto ya que al principio los estados son indefinidos y de esta manera se evitan algunos problemas, NOTA: los reducers solo cambian y solo deben cambiar el estado nada mas...(Reducers = Acciones)
 
 El store es el contenedor del estado y el que contiene los reducers "acciones", y estos reducer se conectan de la manera ya mensionada en el segundo parrafo...
+
+Para poder usar el store es necesario invocar en el index el componente "Provider" desde 'react-redux' y este recibe como propiedad un store que es igual al store que creamos y se coloca asi => store={store}
+y obvio se debe importar a store desde su carpeta de origen...
+
+=== Para guardar la informacion en el estado, lo hare mediante un formulario. debemos hacerlo en el evento "onSubmit", pero antes capturaremos los datos de los formularios en el estado del componente con el evento "onChange", como estoy usando funciones se requiere usar hooks "useState" por ahora.
+
+=== Una vez que tengamos los datos del usuario guardados en nustro estado, lo siguiente es mandar esos datos al store para tener acceso a ellos cuando y donde los necesitemos, esto lo haremos como mensione antes con el evento "onSubmit",
+prevenimos el reinicio de la pagina con el e.preventDefault() y usamos el props.dispatch() para declarar el tipo de accion y el payload, que es la informacion que vamos a pasar en este caso el estado que tenemos almacenado...(props.dispatch() esta funcion recibe un objeto como parametro y lo comun es solo ver el tipo de accion como "type" y la llave donde se almacena la info que queremos pasar al store la cual se llama "payload")
+
+=== Ahora para cambiar los valores de nuestro estado solo debemos asignarlos y ya esta... a cada llave debemos asignarle el valor correspondiente a lo que queremos acambiar osea action.payload.firstName si es firstName, y asi con los demas.
